@@ -1,9 +1,63 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Tabs } from 'expo-router'
+import { Tabs } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
-const _layout = () => {
-  return <Tabs></Tabs>
-}
+const Layout = () => {
+  return (
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primary,
+        tabBarLabelStyle: {
+          fontFamily: 'mon-sb',
+        },
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarLabel: 'Explore',
+          tabBarIcon: ({ size, color }) => <Ionicons name="search" size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="WishList"
+        options={{
+          tabBarLabel: 'Wishlists',
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="heart-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Trips"
+        options={{
+          tabBarLabel: 'Trips',
+          tabBarIcon: ({ size, color }) => <FontAwesome5 name="airbnb" size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="Inbox"
+        options={{
+          tabBarLabel: 'Inbox',
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="message-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Profil"
+        options={{
+          tabBarLabel: 'Profile',
 
-export default _layout
+          headerShown: false,
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="person-circle-outline" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
+  );
+};
+
+export default Layout;
